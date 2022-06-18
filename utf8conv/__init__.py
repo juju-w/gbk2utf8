@@ -8,7 +8,7 @@ from time import time
 parser = argparse.ArgumentParser(description='convert file to utf-8 encoding')
 parser.add_argument('-i', '--input', help='input a folder or a single_file')
 parser.add_argument('-o', '--output_folder', help='output folder for converted files')
-parser.add_argument('-s', '--suffix', nargs='+', help='file type list. eg.: .txt .c .json .py .')
+parser.add_argument('-s', '--suffix', nargs='+', help='file type list. eg.: .txt .c .json .py .', default=['.txt'])
 parser.add_argument('-v', '--verbose', action='store_true', help='show details')
 args = parser.parse_args()
 

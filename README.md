@@ -20,6 +20,7 @@ pip install utf8conv
 ```
 
 ## 使用
+### python 使用
 
 ```shell
 # 帮助
@@ -38,4 +39,11 @@ python -m utf8conv \
 # 转化文本文件
 python -m utf8conv -i /root/code/abc.cpp -o ./
 ```
+### 二进制可执行文件
 
+## TODO List
+- [ ] 编译可执行文件
+- [ ] 换行CRLF(windows) --> LF(unix)
+- [ ] GUI 界面版本
+- [ ] 异常捕捉
+- [ ] 简繁体切换
