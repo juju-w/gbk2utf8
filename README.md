@@ -12,7 +12,7 @@
 
 - Python >= 3.6
 - chardet 
-- alive_progress
+- tqdm
 ## 安装
 
 ```

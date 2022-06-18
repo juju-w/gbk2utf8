@@ -1,7 +1,7 @@
 import argparse
 from pathlib import Path
 import chardet
-from alive_progress import alive_it
+from tqdm import tqdm
 import shutil
 from time import time
 
@@ -28,9 +28,12 @@ max_depth = len(str(proc_file_list[0].parent)) + 1 \
 
 num_file = len(proc_file_list)
 if not args.verbose:
-    proc_file_list = alive_it(proc_file_list)
+    proc_file_list = tqdm(proc_file_list)
 
 for n, f in enumerate(proc_file_list):
+    target_path = Path(args.output_folder) / str(f)[max_depth:]
+    if not target_path.parent.is_dir():
+        target_path.parent.mkdir(parents=True)
     with open(f, 'rb') as file:
         # using chardet lib to detect text encoding
         det = chardet.detect(file.read())
@@ -41,10 +44,10 @@ for n, f in enumerate(proc_file_list):
     if coding != 'UTF-8':
         with open(f, 'r', encoding=coding) as file:
             txt = file.read()
-        with open(Path(args.output_folder) / str(f)[max_depth:], 'w+', encoding='utf-8') as file:
+        with open(target_path, 'w+', encoding='utf-8') as file:
             file.write(txt)
     else:
-        shutil.copyfile(f, Path(args.output_folder) / str(f)[max_depth:])
+        shutil.copyfile(f, target_path)
 
     if args.verbose:
         print(' %.2f%% - [%i/%i] - %s - saved file <%s> to <%s>' %

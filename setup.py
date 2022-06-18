@@ -12,7 +12,7 @@ setup(
     author='wangkuiju',
     author_email='kuijuwang@gmail.com',
     license='MIT License',
-    install_requires=['chardet', 'alive_progress'],
+    install_requires=['chardet', 'tqdm'],
     packages=find_packages(),
     platforms=['all'],
     url='https://github.com/juju-w/utf8conv',
